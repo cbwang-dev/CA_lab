@@ -1,0 +1,13 @@
+1520244790 /users/students/r0818231/Documents/CA/processor_design/RTL/register_file.v
+1518598868 /users/students/r0818231/Documents/CA/processor_design/RTL/alu.v
+1516355086 /users/students/r0818231/Documents/CA/processor_design/RTL/saed32sram_mod.v
+1518598944 /users/students/r0818231/Documents/CA/processor_design/RTL/branch_unit.v
+1518598692 /users/students/r0818231/Documents/CA/processor_design/RTL/mux_2.v
+1520252914 /users/students/r0818231/Documents/CA/processor_design/RTL/reg_arstn_en.v
+1520239608 /users/students/r0818231/Documents/CA/processor_design/RTL/cpu_tb.v
+1556288864 /users/students/r0818231/Documents/CA/processor_design/RTL/sram.v
+1520252716 /users/students/r0818231/Documents/CA/processor_design/RTL/cpu.v
+1518537796 /users/students/r0818231/Documents/CA/processor_design/RTL/alu_control.v
+1518598946 /users/students/r0818231/Documents/CA/processor_design/RTL/pc.v
+1520252894 /users/students/r0818231/Documents/CA/processor_design/RTL/reg_arstn.v
+1619359635 /users/students/r0818231/Documents/CA/processor_design/RTL/control_unit.v

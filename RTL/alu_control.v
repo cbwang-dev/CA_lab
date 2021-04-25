@@ -34,6 +34,7 @@ module alu_control(
    parameter [5:0] FUNC_SLT      = 6'b101010;
    parameter [5:0] FUNC_SLL      = 6'b000000;
    parameter [5:0] FUNC_SRL      = 6'b000010;
+   //parameter [5:0] FUNC_MULT	 = 6'b011000;//multiply
 
 	reg [3:0] rtype_op;
 
@@ -47,6 +48,7 @@ module alu_control(
 		   FUNC_SLT	:  rtype_op = SLT_OP;
 		   FUNC_SLL	:  rtype_op = SLL_OP;
 		   FUNC_SRL	:  rtype_op = SRL_OP;
+		   FUNC_MULT	:  rtype_op = 
 			default:    rtype_op = 4'd0;
 		endcase
 	end
