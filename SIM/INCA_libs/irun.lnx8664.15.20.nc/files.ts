@@ -1,5 +1,5 @@
-1518598868 /users/students/r0818231/Documents/CA/processor_design/RTL/alu.v
-1518537796 /users/students/r0818231/Documents/CA/processor_design/RTL/alu_control.v
+1619367925 /users/students/r0818231/Documents/CA/processor_design/RTL/alu.v
+1619364003 /users/students/r0818231/Documents/CA/processor_design/RTL/alu_control.v
 1518598944 /users/students/r0818231/Documents/CA/processor_design/RTL/branch_unit.v
 1619359635 /users/students/r0818231/Documents/CA/processor_design/RTL/control_unit.v
 1520252716 /users/students/r0818231/Documents/CA/processor_design/RTL/cpu.v

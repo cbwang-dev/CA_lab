@@ -1,7 +1,5 @@
 # H05D3A: Computer architectures
 
-hello
-
 ## Goal of these exercise sessions 
 
 In these exercise sessions, you will develop a complete microprocessor in Verilog. You start by assembling the necessary components to a single cycle processor and run a simple program on it. Next, you will increase the performance, by pipelining the processor. The main objective of this lab session is ensuring the functionality of our CPU as well as to understand its performance and necessary hardware resources. The processor will be synthesized in a 32 nm CMOS technology using generic libraries from Synopsis using regular Vt Cells. The clock frequency used for synthesis is 10 MHz, which means a clock period equals to 100 ns. 
