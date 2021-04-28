@@ -50,6 +50,18 @@ wire [      31:0] regfile_wdata, dram_data,alu_out,
 
 wire signed [31:0] immediate_extended;
 
+// IF/ID: input instruction, output instruction_pipe_IF_ID
+reg_arstn_en #(
+   .DATA_W(32)
+) reg_instruction_pipe_IF_ID(
+   .clk    (clk),
+   .arst_n (arst_n),
+   .en     (enable),
+   .din    (instruction),
+   .dout   (instruction_pipe_IF_ID)
+);
+
+
 wire [31:0] bbbb = instruction_pipe_IF_ID;
 assign immediate_extended = $signed(bbbb[15:0]);
 
@@ -97,16 +109,6 @@ sram #(
    .rdata_ext(rdata_ext     )
 );
 
-// IF/ID: input instruction, output instruction_pipe_IF_ID
-reg_arstn_en #(
-   .DATA_W(32)
-) reg_instruction_pipe_IF_ID(
-   .clk    (clk),
-   .arst_n (arst_n),
-   .en     (enable),
-   .din    (instruction),
-   .dout   (instruction_pipe_IF_ID)
-);
 
 control_unit control_unit(
    .opcode   (bbbb[31:26]),
