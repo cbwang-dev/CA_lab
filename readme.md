@@ -74,16 +74,17 @@ Three files might need to be modified for this purpose: `control.unit.v`,  `alu_
 In this part of the session we will modify our processor to convert it to a pipelined implementation.  For the following exercises assume data and control hazards are solved by NOP instructions.
 For a processor with 5 pipelined stages (Instruction Fetch (IF), Instruction Decode (ID), Execute (EXE), Memory (MEM) and Write Back (WB)), identify which hardware resources belong to each of the mentioned stages, and which signals should go from stage to stage. Try to match the HDL code with the Architecture, and complete the tables underneath (you can complete directly in the `readme.md` file if you want).
 
-|                    | IF | ID | EXE | MEM | WB |
-| ------------------ | -- | -- | --- | --- | -- |
-| Datapath Resources |    |    |     |     |    |
-|                    |    |    |     |     |    |
+|                    |  IF  |  ID  |  EXE  |  MEM  |  WB  |
+| ------------------ | ---- | ---- | ----- | ----- | ---- |
+| Datapath Resources |  PC  |  PC  |  PC   |       |      |
+|                    |  IM  |  IM  |  IM   |       |      |
+|                    |      |  REG |  ALU  |       |      |
 
 
-|         | IF &rarr; ID | ID &rarr; EXE | EXE &rarr; MEM | MEM &rarr; WB |
-| ------- | ------------ | ------------- | -------------- | ------------- |
-| Signals |              |               |                |               |
-|         |              |               |                |               |
+|         |     IF > ID     |      ID > EXE     |      EXE > MEM     |      MEM > WB     |
+| ------- | --------------- | ----------------- | ------------------ | ----------------- |
+| Signals | updated_pc_pipe_IF_ID |                   |                    |                   |
+|         | rdata           |                   |                    |                   |
 
 Insert the pipelined registers where necessary, using the module `reg_arstn_en`. 
 
