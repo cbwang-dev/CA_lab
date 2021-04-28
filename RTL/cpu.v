@@ -50,7 +50,8 @@ wire [      31:0] regfile_wdata, dram_data,alu_out,
 
 wire signed [31:0] immediate_extended;
 
-assign immediate_extended = $signed(instruction_pipe_IF_ID[15:0]);
+wire [31:0] bbbb = instruction_pipe_IF_ID;
+assign immediate_extended = $signed(bbbb[15:0]);
 
 
 pc #(
@@ -108,7 +109,7 @@ reg_arstn_en #(
 );
 
 control_unit control_unit(
-   .opcode   (instruction_pipe_IF_ID[31:26]),
+   .opcode   (bbbb[31:26]),
    .reg_dst  (reg_dst           ), // ID_EX (in doc, but I think it is consumed during ID)
    .branch   (branch            ), // ME_WB
    .mem_read (mem_read          ), // EX_ME
@@ -309,8 +310,8 @@ register_file #(
    .clk      (clk               ),
    .arst_n   (arst_n            ),
    .reg_write(reg_write_pipe_ME_WB         ),
-   .raddr_1  (instruction_pipe_IF_ID[25:21]),
-   .raddr_2  (instruction_pipe_IF_ID[20:16]),
+   .raddr_1  (bbbb[25:21]),
+   .raddr_2  (bbbb[20:16]),
    .waddr    (regfile_waddr_ME_WB     ),
    .wdata    (regfile_wdata     ),
    .rdata_1  (regfile_data_1    ),
@@ -353,7 +354,7 @@ reg_arstn_en #(
 
 
 alu_control alu_ctrl(
-   .function_field (instruction_pipe_ID_EX[5:0]),
+   .function_field (aaaa[5:0]),
    .alu_op         (alu_op_pipe_ID_EX          ),
    .alu_control    (alu_control     )
 );
@@ -386,7 +387,7 @@ alu#(
    .alu_in_1 (alu_operand_2 ),
    .alu_ctrl (alu_control   ),
    .alu_out  (alu_out       ),
-   .shft_amnt(instruction_pipe_ID_EX[10:6]),
+   .shft_amnt(aaaa[10:6]),
    .zero_flag(zero_flag     ),
    .overflow (              )
 );
