@@ -66,9 +66,7 @@ wire [31:0] bbbb = instruction_pipe_IF_ID;
 assign immediate_extended = $signed(bbbb[15:0]);
 
 
-pc #(
-   .DATA_W(32)
-) program_counter (
+pc program_counter (
    .clk       (clk       ),
    .arst_n    (arst_n    ),
    .branch_pc (branch_pc_pipe_EX_ME ),
@@ -271,9 +269,7 @@ reg_arstn reg_regfile_waddr_ME_WB(
 );
 
 
-register_file #(
-   .DATA_W(32)
-) register_file(
+register_file register_file(
    .clk      (clk               ),
    .arst_n   (arst_n            ),
    .reg_write(reg_write_pipe_ME_WB         ),
@@ -329,9 +325,7 @@ reg_arstn reg_immediate_extended_pipe_ID_EX(
    .dout   (immediate_extended_pipe_ID_EX)
 );
 
-mux_2 #(
-   .DATA_W(32)
-) alu_operand_mux (
+mux_2 alu_operand_mux (
    .input_a (immediate_extended_pipe_ID_EX), // is this needed to be registered?
    .input_b (regfile_data_2_pipe_ID_EX    ),
    .select_a(alu_src_pipe_ID_EX           ),
@@ -339,9 +333,7 @@ mux_2 #(
 );
 
 
-alu#(
-   .DATA_W(32)
-) alu(
+alualu(
    .alu_in_0 (regfile_data_1_pipe_ID_EX),
    .alu_in_1 (alu_operand_2 ),
    .alu_ctrl (alu_control   ),
@@ -438,9 +430,7 @@ reg_arstn reg_alu_out_pipe_ME_WB(
 );
 
 
-mux_2 #(
-   .DATA_W(32)
-) regfile_data_mux (
+mux_2 regfile_data_mux (
    .input_a  (dram_data_pipe_ME_WB    ),
    .input_b  (alu_out_pipe_ME_WB      ),
    .select_a (mem_2_reg_pipe_ME_WB     ),
