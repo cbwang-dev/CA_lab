@@ -259,6 +259,16 @@ reg_arstn_en #(
    .dout   (jump_pipe_EX_ME)
 );
 
+// ID/EX: input instruction_pipe_IF_ID, output instruction_pipe_ID_EX
+reg_arstn_en #(
+   .DATA_W(32)
+) reg_instruction_pipe_ID_EX(
+   .clk    (clk),
+   .arst_n (arst_n),
+   .en     (enable),
+   .din    (instruction_pipe_IF_ID),
+   .dout   (instruction_pipe_ID_EX)
+);
 
 mux_2 #(
    .DATA_W(5)
@@ -288,6 +298,7 @@ reg_arstn_en #(
    .din    (regfile_waddr_EX_ME),
    .dout   (regfile_waddr_ME_WB)
 );
+
 
 register_file #(
    .DATA_W(32)
@@ -336,16 +347,7 @@ reg_arstn_en #(
    .dout   (regfile_data_2_pipe_ID_EX)
 );
 
-// ID/EX: input instruction_pipe_IF_ID, output instruction_pipe_ID_EX
-reg_arstn_en #(
-   .DATA_W(32)
-) reg_instruction_pipe_ID_EX(
-   .clk    (clk),
-   .arst_n (arst_n),
-   .en     (enable),
-   .din    (instruction_pipe_IF_ID),
-   .dout   (instruction_pipe_ID_EX)
-);
+
 
 alu_control alu_ctrl(
    .function_field (instruction_pipe_ID_EX[5:0]),

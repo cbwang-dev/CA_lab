@@ -76,15 +76,19 @@ For a processor with 5 pipelined stages (Instruction Fetch (IF), Instruction Dec
 
 |                    |  IF  |  ID  |  EXE  |  MEM  |  WB  |
 | ------------------ | ---- | ---- | ----- | ----- | ---- |
-| Datapath Resources |  PC  |  PC  |  PC   |       |      |
-|                    |  IM  |  IM  |  IM   |       |      |
-|                    |      |  REG |  ALU  |       |      |
+| Datapath Resources | PC   | PC   | PC    |       |      |
+|                    | IM   | IM   | IM    |       |      |
+|                    |      | REG  | ALU   |       |      |
 
 
-|         |     IF > ID     |      ID > EXE     |      EXE > MEM     |      MEM > WB     |
-| ------- | --------------- | ----------------- | ------------------ | ----------------- |
-| Signals | updated_pc_pipe_IF_ID |                   |                    |                   |
-|         | rdata           |                   |                    |                   |
+|         |            IF > ID         |            ID > EXE           |           EXE > MEM        |          MEM > WB         |
+| ------- | -------------------------- | ----------------------------- | -------------------------- | ------------------------- |
+| Signals | updated_pc_pipe_IF_ID      | updated_pc_pipe_ID_EXE        | updated_pc_pipe_EXE_MEM    | NOP                       |
+|         | instruction_ext_pipe_IF_ID |                               |                            |                           |
+|         |                            | regfile_data_1_pipe_ID_EXE    |                            |                           |
+|         |                            | regfile_data_2_pipe_ID_EXE    |                            |                           |
+|         |                            |                               |                            |                           |
+|         |                            |                               |                            |                           |
 
 Insert the pipelined registers where necessary, using the module `reg_arstn_en`. 
 
