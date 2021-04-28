@@ -44,7 +44,8 @@ parameter integer SEL_W       = ADDR_W-7;
 parameter integer MACRO_DEPTH = 128;
 parameter integer N_MEMS      = 2**(ADDR_W)/MACRO_DEPTH;
 
-
+// what is the difference between mem_sel and mem_sel_ext?
+// what is the difference between rdata and rdata_ext?
 reg  [      6:0] addr_i, addr_ext_i;
 reg  [SEL_W-1:0] mem_sel;
 reg  [SEL_W-1:0] mem_sel_ext;

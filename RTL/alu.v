@@ -33,14 +33,14 @@ module alu #(
    parameter [3:0] SRL_OP = 4'd4;
    parameter [3:0] SUB_OP = 4'd5;
    parameter [3:0] SLT_OP = 4'd7;
-   parameter [3:0] MULT_OP = 4'd9;//mult
+   parameter [3:0] MULT_OP = 4'd9; //added for multiplication
    parameter [3:0] NOR_OP = 4'd12;
 
 
    //REG AND WIRE DECLARATION
    reg signed [DATA_W-1:0] sub_out,add_out,and_out,or_out,
-                           nor_out,slt_out, sll_out, srl_out,mult_out;//mult
-	reg 		               overflow_add,overflow_sub,overflow_mult,
+                           nor_out,slt_out, sll_out, srl_out, mult_out; // added for multiplication
+	reg 		               overflow_add, overflow_sub, overflow_mult, // added for multiplication
                            msb_equal_flag;
    
    
@@ -66,7 +66,7 @@ module alu #(
       sll_out  =   alu_in_1 << shft_amnt;
       srl_out  =   alu_in_1 >> shft_amnt;
       sub_out  =   alu_in_0 - alu_in_1;
-      mult_out =   alu_in_0 * alu_in_1;//mult
+      mult_out =   alu_in_0 * alu_in_1; //mult
       and_out  =   alu_in_0 & alu_in_1;
       or_out   =   alu_in_0 | alu_in_1;
       nor_out  = ~(alu_in_0 | alu_in_1);
@@ -119,6 +119,7 @@ module alu #(
          overflow_sub = 1'b0;
       end
    end
+
 //mult_overflow
    always@(*)begin
    if((alu_in_0 != 16'b0)&&(mult_out/alu_in_0 != alu_in_1))begin
