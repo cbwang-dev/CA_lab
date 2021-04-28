@@ -7,7 +7,7 @@ parameter integer PRESET_VAL = 0
       input                  clk,
       input                  arst_n,
       input  [ DATA_W-1:0]   din,
-      output [ DATA_W-1:0]   dout
+      output wire[ DATA_W-1:0]   dout
 );
 
 reg [DATA_W-1:0] r,nxt;
