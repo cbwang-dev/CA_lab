@@ -1,13 +1,13 @@
 // Configurable register for variable width
 
 module reg_arstn#(
-parameter integer DATA_W     = 20,
+parameter integer DATA_W     = 32,
 parameter integer PRESET_VAL = 0
    )(
       input                  clk,
       input                  arst_n,
       input  [ DATA_W-1:0]   din,
-      output wire[ DATA_W-1:0]   dout
+      output [ DATA_W-1:0]   dout
 );
 
 reg [DATA_W-1:0] r,nxt;
