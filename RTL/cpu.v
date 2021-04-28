@@ -270,11 +270,14 @@ reg_arstn_en #(
    .dout   (instruction_pipe_ID_EX)
 );
 
+
+wire [31:0] aaaa = instruction_pipe_ID_EX;
+
 mux_2 #(
    .DATA_W(5)
 ) regfile_dest_mux (
-   .input_a (instruction_pipe_ID_EX[15:11]),
-   .input_b (instruction_pipe_ID_EX[20:16]),
+   .input_a (aaaa[15:11]),
+   .input_b (aaaa[20:16]),
    .select_a(reg_dst_pipe_ID_EX          ),
    .mux_out (regfile_waddr     )
 );
@@ -472,7 +475,7 @@ sram #(
 
 reg_arstn_en #(
    .DATA_W(32)
-) reg_2(
+) reg_dram_data_pipe_ME_WB(
    .clk    (clk),
    .arst_n (arst_n),
    .en     (enable),
@@ -482,7 +485,7 @@ reg_arstn_en #(
 
 reg_arstn_en #(
    .DATA_W(32)
-) reg_3(
+) reg_alu_out_pipe_ME_WB(
    .clk    (clk),
    .arst_n (arst_n),
    .en     (enable),
